@@ -11,17 +11,57 @@ Test data:
 GOOD LUCK 😀 
 */
 
-const Car = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
-};
+// // Solution from Challenge 1
+// const Car = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// };
 
-Car.prototype.accelerate = function () {
-  this.speed += 10;
-  console.log(`${this.make} is going ${this.speed}km/h`);
-};
+// Car.prototype.accelerate = function () {
+//   this.speed += 10;
+//   console.log(`${this.make} is going ${this.speed}km/h`);
+// };
 
-Car.prototype.brake = function () {
-  this.speed -= 5;
-  console.log(`${this.make} is going ${this.speed}km/h`);
-};
+// Car.prototype.brake = function () {
+//   this.speed -= 5;
+//   console.log(`${this.make} is going ${this.speed}km/h`);
+// };
+
+// My go at the solution...
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going ${this.speed}km/h`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going ${this.speed}km/h`);
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
+
+  //   speedUS() {
+  //     this.speed / 1.6;
+  //     console.log(`${make} is going `);
+  //   }
+}
+
+const ford = new CarCl('Ford', 120);
+console.log(ford.speedUS);
+ford.accelerate();
+ford.accelerate();
+ford.accelerate();
+ford.speedUS = 50;
+console.log(ford);
